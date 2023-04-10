@@ -129,22 +129,3 @@ WHERE Exam.ExamID IS NULL;
 
 
 
-SELECT Exam.*, Subject.SubjectName, COUNT(ExamResult.ExamResultID) AS NumStudents
-FROM Exam
-INNER JOIN Subject ON Exam.SubjectID = Subject.SubjectID
-INNER JOIN ExamResult ON Exam.ExamID = ExamResult.ExamID
-WHERE Exam.ExamDate = DATEADD(day, -1, GETDATE())
-GROUP BY Exam.ExamID, Subject.SubjectName;
-
-
-SELECT ExamResult.*, Student.FirstName, Student.LastName, Group.GroupName
-FROM ExamResult
-INNER JOIN Student ON ExamResult.StudentID = Student.StudentID
-INNER JOIN Group ON Student.GroupID = Group.GroupID;
-
-
-SELECT Student.*, AVG(ExamResult.Points) AS AvgResult
-FROM Student
-LEFT JOIN ExamResult ON Student.StudentID = ExamResult.StudentID
-GROUP BY Student.StudentID;
-
