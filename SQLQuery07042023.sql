@@ -111,7 +111,7 @@ VALUES
 
 SELECT Student.*, [Group].GroupName
 FROM Student
-INNER JOIN [Group] ON Student.GroupID = [Group].GroupID;
+INNER JOIN [Group] ON Student.StudentID = [Group].GroupID;
 
 
 
